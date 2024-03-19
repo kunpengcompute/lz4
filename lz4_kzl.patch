@@ -823,7 +823,7 @@ diff -uprN lz4-1.9.3/lib/lz4.h lz4-1.9.3-xqm/lib/lz4.h
   */
  #ifndef LZ4_MEMORY_USAGE
 -# define LZ4_MEMORY_USAGE 14
-+# define LZ4_MEMORY_USAGE 9
++# define LZ4_MEMORY_USAGE 11
  #endif
  
  
