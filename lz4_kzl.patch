@@ -499,7 +499,7 @@ diff -uprN lz4-1.9.3/lib/lz4.c lz4-1.9.3-xqm/lib/lz4.c
      if (inputSize<LZ4_minLength) goto _last_literals;        /* Input too small, no compression (all literals) */
  
      /* First Byte */
-+    PrefetchCpuCacheArea(cctx->hashTable[0], LZ4_HASH_SIZE_U32, L1CACHE);
++    PrefetchCpuCacheArea(cctx->hashTable, LZ4_HASH_SIZE_U32, L1CACHE);
      LZ4_putPosition(ip, cctx->hashTable, tableType, base);
 -    ip++; forwardH = LZ4_hashPosition(ip, tableType);
 +    ip++; forwardH = LZ4_hashPositionIgnoreBufferLength(ip, tableType);
