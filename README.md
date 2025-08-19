@@ -23,7 +23,7 @@ lrwxrwxrwx 1 root root     15 Aug 19 19:29 liblz4.so.1 -> liblz4.so.1.9.3
 -rwxr-xr-x 1 root root 209344 Aug 19 19:29 liblz4.so.1.9.3
 ...
 ```
-可以通过替换原来lz4.so或者通过LD_LIBRARY_PATH=/kplz4+libpath/:$LD_LIBRARY_PATH的方式使用鲲鹏优化版本的lz4动态库。
+可以通过替换原来lz4.so或者通过LD_LIBRARY_PATH=/kplz4_libpath/:$LD_LIBRARY_PATH的方式使用鲲鹏优化版本的lz4动态库。
 可以对对于软件二进制ldd查看依赖的lz4.so是否对应优化的鲲鹏版本路径一致。
 
 #### 测试
