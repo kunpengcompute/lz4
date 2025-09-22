@@ -1098,7 +1098,7 @@ LZ4_FORCE_INLINE int LZ4_compress_generic_validated(
 
         /* Catch up */
         filledIp = ip;
-        while ((unlikely(ip[-1]==match[-1])) && ((ip>anchor) & (match > lowLimit))) { ip--; match--; }
+        while (((ip>anchor) & (match > lowLimit)) && (unlikely(ip[-1]==match[-1]))) { ip--; match--; }
 
         /* Encode Literals */
         {   unsigned const litLength = (unsigned)(ip - anchor);
