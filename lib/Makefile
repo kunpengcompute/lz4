@@ -48,11 +48,11 @@ BUILD_STATIC:=yes
 
 CPPFLAGS+= -DXXH_NAMESPACE=LZ4_
 CPPFLAGS+= $(MOREFLAGS)
-CFLAGS  ?= -O3
+CFLAGS  ?= -O3 -march=native
 DEBUGFLAGS:= -Wall -Wextra -Wcast-qual -Wcast-align -Wshadow \
              -Wswitch-enum -Wdeclaration-after-statement -Wstrict-prototypes \
              -Wundef -Wpointer-arith -Wstrict-aliasing=1
-CFLAGS  += $(DEBUGFLAGS)
+CFLAGS  += -flto -fno-plt $(DEBUGFLAGS)
 FLAGS    = $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 
 SRCFILES := $(sort $(wildcard *.c))
