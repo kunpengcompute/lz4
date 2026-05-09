@@ -113,7 +113,7 @@ static void skipTrigger(int srcSize, uint8_t *skipStep)
     if (srcSize >= G_64KLIMIT) {
         *skipStep = 2;
     } else {
-        *skipStep = 6;
+        *skipStep = 4;
     }
 }
 
