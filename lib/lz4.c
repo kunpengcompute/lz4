@@ -57,7 +57,7 @@
 #define LZ4_ACCELERATION_MAX 65537
 
 #include <arm_neon.h>
-#include "stddef.h"
+#include <stddef.h>
 
 #define G_64KLIMIT       ((65536) + (11))
 
@@ -2180,7 +2180,9 @@ LZ4_decompress_generic(
                         KZL_MEMCPY_2(op+16, match_3, 2);
                         op += length;
                         continue;
-            }   }   }
+                    }   
+                }   
+            }
 
             if (checkOffset && (unlikely(match + dictSize < lowPrefix))) { goto _output_error; } /* Error : offset outside buffers */
             /* match starting within external dictionary */
