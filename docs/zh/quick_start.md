@@ -61,6 +61,7 @@ C语言块压缩/解压示例代码如下。
 
 ```c
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <lz4.h>
 
@@ -138,10 +139,10 @@ int main() {
    回显结果如下：
 
    ```text
-   原始大小: 71 字节
-   压缩后大小: 58 字节
-   压缩率: 81.69%
-   解压后大小: 71 字节
+原始大小: 92 字节
+    压缩后大小: 85 字节
+    压缩率: 92.39%
+    解压后大小: 92 字节
    解压后内容: LZ4 is a very fast compression algorithm, providing compression speed at 500 MB/s per core.
    数据一致性验证: 通过
    ```
