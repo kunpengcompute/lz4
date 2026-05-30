@@ -15,8 +15,6 @@
 |KZL_MEMCPY_8|宏|8字节NEON向量化内存拷贝，aarch64上使用 `vst1_u8/vld1_u8`，其他平台回退为 `memcpy`。|
 |KZL_MEMCPY_16|宏|16字节NEON向量化内存拷贝，aarch64上使用 `vst1q_u8/vld1q_u8`，其他平台回退为 `memcpy`。|
 |KZL_MEMCPY_32|宏|32字节NEON向量化内存拷贝，aarch64上使用两次 `vst1q_u8/vld1q_u8`，其他平台回退为两次 `LZ4_memcpy`。|
-|KZL_MEMCPY_16X1|宏|16字节NEON向量化内存拷贝（64位对齐版本），使用 `vld1q_u64/vst1q_u64`。|
-|KZL_MEMCPY_32X1|宏|32字节NEON向量化内存拷贝（64位对齐版本），使用两次 `vld1q_u64/vst1q_u64`。|
 |KZL_LittleEndianfastHash5|函数|小端模式下5字节快速哈希计算，使用预计算常量优化乘法与移位。|
 |KZL_BigEndianfastHash5|函数|大端模式下5字节快速哈希计算，使用预计算常量优化乘法与移位。|
 |LZ4_hashPositionIgnoreBufferLength|函数|忽略缓冲区长度限制的哈希位置计算，强制使用5字节哈希（LZ4_hash5）以提升匹配精度。|
@@ -43,9 +41,6 @@
 #    define KZL_MEMCPY_16(dst, src, size) vst1q_u8((dst), vld1q_u8(src))
 #    define KZL_MEMCPY_32(dst, src, size) vst1q_u8((dst), vld1q_u8(src)); \
                                           vst1q_u8(((dst)+16), vld1q_u8(((src)+16)))
-#    define KZL_MEMCPY_16X1(dst, src, size) vst1q_u64((dst), vld1q_u64(src))
-#    define KZL_MEMCPY_32X1(dst, src, size) vst1q_u64((dst), vld1q_u64(src)); \
-                                             vst1q_u64(((dst)+16), vld1q_u64(((src)+16)))
 #endif
 ```
 
