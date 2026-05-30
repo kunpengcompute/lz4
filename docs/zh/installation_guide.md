@@ -13,6 +13,10 @@
 
 ## 获取代码
 
+有两种方式获取基于鲲鹏优化的LZ4代码，任选其一即可。
+
+### 方式一：拉取原始代码并应用patch
+
 1. 获取LZ4 v1.9.4原始代码。
 
    ```bash
@@ -20,25 +24,29 @@
    cd lz4-kunpeng
    ```
 
-2. 获取鲲鹏优化patch。
+2. 从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录，然后应用patch。
 
-   从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录。
+   ```bash
+   patch -p1 < /path/to/kunpeng_lz4_v1.0.patch
+   ```
 
-## 应用patch
+   如果patch成功应用，回显如下：
 
-将patch文件应用到LZ4源码目录。
+   ```text
+   patching file lib/lz4.c
+   patching file lib/Makefile
+   ```
+
+### 方式二：直接拉取优化版代码
+
+直接从鲲鹏优化代码仓拉取已包含优化的LZ4代码。
 
 ```bash
+git clone -b dev-1.9.4 https://gitcode.com/boostkit/lz4.git lz4-kunpeng
 cd lz4-kunpeng
-patch -p1 < /path/to/kunpeng_lz4_v1.0.patch
 ```
 
-如果patch成功应用，回显如下：
-
-```text
-patching file lib/lz4.c
-patching file lib/Makefile
-```
+该分支已包含鲲鹏优化代码，无需额外应用patch。
 
 ## 编译安装
 
