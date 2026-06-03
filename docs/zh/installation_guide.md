@@ -1,52 +1,52 @@
 # 安装指南
 
-本文档提供基于鲲鹏优化的LZ4的详细编译安装步骤。
+本文档提供开源LZ4优化的鲲鹏LZ4的安装要求与详细编译安装步骤。
 
 ## 环境要求
 
 | 软件 | 版本要求 | 说明 |
 | ------ | ---------- | ------ |
 | 操作系统 | openEuler 22.03 LTS SP3 | Linux发行版 |
-| 编译器 | clang 16.0.6+<br>GCC 9.0+ | C99/C11标准 |
+| 编译器 | clang 16.0.6版本及以上<br>GCC 9.0版本及以上 | C99/C11标准 |
 | Make | GNU Make 4.0+ | 构建工具 |
-| Git | 2.0或更高版本 | 版本控制 |
+| Git | 大于等于2.0版本 | 版本控制 |
 
 ## 获取代码
 
-有两种方式获取基于鲲鹏优化的LZ4代码，任选其一即可。
+提供两种方式获取基于开源LZ4优化的鲲鹏LZ4代码，任选其一即可。
 
-### 方式一：拉取原始代码并应用patch
+* 方式一：拉取原始代码并应用补丁
 
-1. 获取LZ4 v1.9.4原始代码。
+  1. 获取LZ4 v1.9.4原始代码。
 
-   ```bash
-   git clone -b v1.9.4 https://github.com/lz4/lz4.git lz4-kunpeng
-   cd lz4-kunpeng
-   ```
+     ```bash
+     git clone -b v1.9.4 https://github.com/lz4/lz4.git lz4-kunpeng
+     cd lz4-kunpeng
+     ```
 
-2. 从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录，然后应用patch。
+  2. 从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录，然后应用补丁。
 
-   ```bash
-   patch -p1 < /path/to/kunpeng_lz4_v1.0.patch
-   ```
+     ```bash
+     patch -p1 < /path/to/kunpeng_lz4_v1.0.patch
+     ```
 
-   如果patch成功应用，回显如下：
+     若补丁成功应用，回显如下：
 
-   ```text
-   patching file lib/lz4.c
-   patching file lib/Makefile
-   ```
+     ```text
+     patching file lib/lz4.c
+     patching file lib/Makefile
+     ```
 
-### 方式二：直接拉取优化版代码
+* 方式二：直接拉取优化版代码
 
-直接从鲲鹏优化代码仓拉取已包含优化的LZ4代码。
+  直接从鲲鹏优化代码仓拉取已包含优化的LZ4代码。
 
-```bash
-git clone -b dev-1.9.4 https://gitcode.com/boostkit/lz4.git lz4-kunpeng
-cd lz4-kunpeng
-```
+  ```bash
+  git clone -b dev-1.9.4 https://gitcode.com/boostkit/lz4.git lz4-kunpeng
+  cd lz4-kunpeng
+  ```
 
-该分支已包含鲲鹏优化代码，无需额外应用patch。
+  该分支已包含鲲鹏优化代码，无需额外应用补丁。
 
 ## 编译安装
 
@@ -121,15 +121,15 @@ cd lz4-kunpeng
 
 ## 编译选项说明
 
-### Make常用变量
+**Make常用变量**
 
 | 变量 | 默认值 | 说明 |
 | ------ | -------- | ------ |
-| `CFLAGS` | `-O3 -march=native` | 编译器优化标志 |
-| `PREFIX` | `/usr/local` | 安装路径前缀 |
-| `LDFLAGS` | - | 链接器标志 |
+| `CFLAGS` | `-O3 -march=native` | 编译器优化标志。 |
+| `PREFIX` | `/usr/local` | 安装路径前缀。 |
+| `LDFLAGS` | - | 链接器标志。 |
 
-### 性能优化编译标志
+**性能优化编译标志**
 
 针对ARM架构（鲲鹏处理器）的推荐编译标志。
 
@@ -139,7 +139,7 @@ make CFLAGS="-O3 -march=armv9.2-a+crc+sve+sve2+sve2-bitperm -mtune=native -flto 
 
 ## 运行测试
 
-1. 进入lz4源码目录。
+1. 进入LZ4源码目录。
 
    ```shell
    cd lz4-kunpeng

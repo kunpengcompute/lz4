@@ -1,6 +1,6 @@
 # 快速入门
 
-执行本文档操作前确保已安装基于鲲鹏优化的LZ4，详细安装步骤请参见《[安装指南](./installation_guide.md)》。安装成功后，主要生成产物位于安装目录中（例如：`/path/to/install/lz4-bin`）。
+执行本文档操作前确保已安装基于开源LZ4优化的鲲鹏LZ4，详细安装步骤请参见《[安装指南](./installation_guide.md)》。安装成功后，主要生成产物位于安装目录中（例如：`/path/to/install/lz4-bin`）。
 
 ```text
 /path/to/install/lz4-bin/
@@ -24,7 +24,7 @@ export LD_LIBRARY_PATH=/path/to/install/lz4-bin/lib:$LD_LIBRARY_PATH
 
 ## 使用命令行工具
 
-### 基本压缩与解压
+**基本压缩与解压**
 
 1. 压缩文件。
 
@@ -44,20 +44,20 @@ export LD_LIBRARY_PATH=/path/to/install/lz4-bin/lib:$LD_LIBRARY_PATH
    lz4 --list filename.lz4
    ```
 
-### 常用压缩选项
+**常用压缩选项**
 
 | 选项 | 说明 |
 | -- | -- |
-| `-1` ~ `-9` | 设置压缩级别（默认1，数字越大压缩率越高但速度越慢） |
-| `--fast` | 最快压缩模式 |
-| `-f` | 强制覆盖输出文件 |
-| `--no-frame-crc` | 禁用帧CRC校验 |
+| `-1` ~ `-9` | 设置压缩级别（默认1，数字越大压缩率越高但速度越慢）。 |
+| `--fast` | 最快压缩模式。 |
+| `-f` | 强制覆盖输出文件。 |
+| `--no-frame-crc` | 禁用帧CRC校验。 |
 
 ## 使用C语言API
 
-### 块压缩/解压示例代码
+### 示例代码
 
-C语言块压缩/解压示例代码如下。
+C语言块压缩、解压示例代码如下。
 
 ```c
 #include <stdio.h>
@@ -119,7 +119,7 @@ int main() {
 }
 ```
 
-### 编译和运行
+### 编译运行
 
 1. 编译（假设安装在 `/path/to/install/lz4-bin` 目录）。
 
@@ -139,17 +139,17 @@ int main() {
    回显结果如下：
 
    ```text
-原始大小: 92 字节
-    压缩后大小: 85 字节
-    压缩率: 92.39%
-    解压后大小: 92 字节
+   原始大小: 92 字节
+   压缩后大小: 85 字节
+   压缩率: 92.39%
+   解压后大小: 92 字节
    解压后内容: LZ4 is a very fast compression algorithm, providing compression speed at 500 MB/s per core.
    数据一致性验证: 通过
    ```
 
 ## 常用操作
 
-### 快速压缩
+**快速压缩**
 
 使用指定加速级别进行压缩，加速越高速度越快但压缩率越低。
 
@@ -159,9 +159,9 @@ int compressed_size = LZ4_compress_fast(source, compressed,
                                          acceleration);
 ```
 
-### HC高压缩率模式
+**HC高压缩率模式**
 
-使用HC模式获得更高的压缩率（速度较慢）。
+使用HC模式获得更高的压缩率（速度较慢）。compression_level取值范围为1~12，默认为9。
 
 ```c
 #include <lz4hc.h>
@@ -171,9 +171,7 @@ int compressed_size = LZ4_compress_HC(source, compressed,
                                        compression_level);
 ```
 
-compression_level取值范围为1~12，默认为9。
-
-### 帧格式压缩/解压
+**帧格式压缩、解压**
 
 使用帧格式支持流式压缩与校验。
 
@@ -191,7 +189,7 @@ size_t compressed_size = LZ4F_compressUpdate(cctx, dst, dst_capacity,
 LZ4F_freeCompressionContext(cctx);
 ```
 
-### 部分解压
+**部分解压**
 
 在目标缓冲区不足时解压尽可能多的数据。
 
