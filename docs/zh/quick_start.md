@@ -15,13 +15,6 @@
     └── pkgconfig/                   # pkg-config配置
 ```
 
-## 设置环境变量
-
-```bash
-export PATH=/path/to/install/lz4-bin/bin:$PATH
-export LD_LIBRARY_PATH=/path/to/install/lz4-bin/lib:$LD_LIBRARY_PATH
-```
-
 ## 使用命令行工具
 
 **基本压缩与解压**
@@ -117,6 +110,13 @@ int main() {
     free(decompressed);
     return 0;
 }
+```
+
+## 设置示例程序环境变量
+
+```bash
+export PATH=/path/to/install/lz4-bin/bin:$PATH
+export LD_LIBRARY_PATH=/path/to/install/lz4-bin/lib:$LD_LIBRARY_PATH
 ```
 
 ### 编译运行

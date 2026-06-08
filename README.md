@@ -57,33 +57,6 @@ docs/
     ├── menu_lz4.md                # 导航菜单
     └── release_notes.md           # 版本说明书
 
-# 代码目录（lz4 v1.9.4原始源码 + 应用patch后）
-lz4/
-├── lib/                           # 核心库源码
-│   ├── lz4.c                      # LZ4压缩/解压缩核心实现（本patch优化目标）
-│   ├── lz4hc.c                    # LZ4高压缩率模式实现
-│   ├── lz4frame.c                 # LZ4帧格式实现
-│   ├── lz4.h                      # LZ4块压缩/解压缩头文件
-│   ├── lz4hc.h                    # LZ4 HC模式头文件
-│   ├── lz4frame.h                 # LZ4帧格式头文件
-│   ├── lz4frame_static.h          # 帧格式内部头文件
-│   ├── lz4file.c                  # 文件操作辅助
-│   ├── lz4file.h                  # 文件操作辅助头文件
-│   ├── xxhash.c                   # XXHash哈希算法实现
-│   ├── xxhash.h                   # XXHash哈希算法头文件
-│   └── Makefile                   # 库构建文件（本patch优化目标）
-├── programs/                      # 命令行程序
-│   ├── lz4cli.c                   # 命令行入口
-│   ├── lz4io.c                    # 文件I/O操作
-│   ├── bench.c                    # 性能基准测试
-│   └── datagen.c                  # 测试数据生成
-├── tests/                         # 测试套件
-├── doc/                           # 格式说明文档
-├── ossfuzz/                       # OSS-Fuzz模糊测试
-├── contrib/                       # 辅助工具与示例
-├── build/                         # 构建配置（CMake/VS）
-├── examples/                      # 使用示例
-└── Makefile                       # 顶层构建文件
 ```
 
 ## 版本说明

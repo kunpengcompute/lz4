@@ -27,7 +27,8 @@
   2. 从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录，然后应用补丁。
 
      ```bash
-     patch -p1 < /path/to/kunpeng_lz4_v1.0.patch
+     curl -L "https://gitcode.com/qq_41888214/lz4-opt/blob/master/kunpeng_lz4_v1.0.patch" -o kunpeng_lz4_v1.0.patch
+     patch -p1 < ./kunpeng_lz4_v1.0.patch
      ```
 
      若补丁成功应用，回显如下：
@@ -35,6 +36,37 @@
      ```text
      patching file lib/lz4.c
      patching file lib/Makefile
+     ```
+
+      补丁应用后代码目录如下：
+
+     ```text
+      lz4/
+      ├── lib/                           # 核心库源码
+      │   ├── lz4.c                      # LZ4压缩/解压缩核心实现（本patch优化目标）
+      │   ├── lz4hc.c                    # LZ4高压缩率模式实现
+      │   ├── lz4frame.c                 # LZ4帧格式实现
+      │   ├── lz4.h                      # LZ4块压缩/解压缩头文件
+      │   ├── lz4hc.h                    # LZ4 HC模式头文件
+      │   ├── lz4frame.h                 # LZ4帧格式头文件
+      │   ├── lz4frame_static.h          # 帧格式内部头文件
+      │   ├── lz4file.c                  # 文件操作辅助
+      │   ├── lz4file.h                  # 文件操作辅助头文件
+      │   ├── xxhash.c                   # XXHash哈希算法实现
+      │   ├── xxhash.h                   # XXHash哈希算法头文件
+      │   └── Makefile                   # 库构建文件（本patch优化目标）
+      ├── programs/                      # 命令行程序
+      │   ├── lz4cli.c                   # 命令行入口
+      │   ├── lz4io.c                    # 文件I/O操作
+      │   ├── bench.c                    # 性能基准测试
+      │   └── datagen.c                  # 测试数据生成
+      ├── tests/                         # 测试套件
+      ├── doc/                           # 格式说明文档
+      ├── ossfuzz/                       # OSS-Fuzz模糊测试
+      ├── contrib/                       # 辅助工具与示例
+      ├── build/                         # 构建配置（CMake/VS）
+      ├── examples/                      # 使用示例
+      └── Makefile                       # 顶层构建文件
      ```
 
 * 方式二：直接拉取优化版代码
