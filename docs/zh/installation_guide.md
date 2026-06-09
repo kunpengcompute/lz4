@@ -27,7 +27,7 @@
   2. 从本代码仓下载 `kunpeng_lz4_v1.0.patch` 文件到本地目录，然后应用补丁。
 
      ```bash
-     curl -L "https://gitcode.com/qq_41888214/lz4-opt/blob/master/kunpeng_lz4_v1.0.patch" -o kunpeng_lz4_v1.0.patch
+     curl -L -k "https://gitcode.com/boostkit/lz4/master/kunpeng_lz4_v1.0.patch" -o kunpeng_lz4_v1.0.patch
      patch -p1 < ./kunpeng_lz4_v1.0.patch
      ```
 
