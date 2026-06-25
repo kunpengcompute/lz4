@@ -59,13 +59,13 @@ You can use either of the following methods to obtain the Kunpeng LZ4 code:
 
 2. Perform compilation.
 
-   - Use the default optimization options for compilation. (The Makefile contains the `-march=native -flto -fno-plt` optimization options.)
+   * Use the default optimization options for compilation. (The Makefile contains the `-march=native -flto -fno-plt` optimization options.)
 
      ```bash
      make
      ```
 
-   - Alternatively, manually specify additional compilation options.
+   * Alternatively, manually specify additional compilation options.
 
      ```bash
      make CFLAGS="-O3 -march=armv9.2-a+crc+sve+sve2+sve2-bitperm -mtune=native"
