@@ -91,13 +91,13 @@
 
 2. 编译。
 
-   - 使用默认优化选项编译（Makefile已包含 `-march=native -flto -fno-plt` 优化选项）。
+   * 使用默认优化选项编译（Makefile已包含 `-march=native -flto -fno-plt` 优化选项）。
 
      ```bash
      make
      ```
 
-   - 或手动指定额外编译选项。
+   * 或手动指定额外编译选项。
 
      ```bash
      make CFLAGS="-O3 -march=armv9.2-a+crc+sve+sve2+sve2-bitperm -mtune=native"
