@@ -136,8 +136,6 @@ We welcome your contributions to the community. If you have any questions/sugges
 
 ## Acknowledgments
 
-LZ4 is jointly developed by the following Huawei department:
-
-- Kunpeng Computing BoostKit Development Dept
+LZ4 is primarily contributed by Huawei.
 
 Thank you to everyone in the community for your PRs. We warmly welcome contributions to LZ4!
